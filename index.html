@@ -18,13 +18,19 @@
     <nav class="nav">
         <div class="container nav-container">
             <a href="#" class="logo">erenfidan</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#writing">Writing</a></li>
-                <li><a href="#cv">CV</a></li>
-                <li><a href="https://github.com/erenfidan14" target="_blank">GitHub</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#writing">Writing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://github.com/erenfidan14" target="_blank">GitHub</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon light">☀️</span>
+                    <span class="theme-icon dark">🌙</span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -42,7 +48,7 @@
                     </h1>
                     <p class="hero-description">
                         Currently pursuing MSc Marine Technology at Aalto University (100% Excellence Scholarship). 
-                        Previously: Turkish Airlines Technic, Schneider Electric.
+                        Previously: Turkish Airlines Technic, Schneider Electric, Aalto Research.
                     </p>
                     <div class="hero-actions">
                         <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -50,37 +56,52 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <!-- Replace with your photo -->
-                    <div class="image-placeholder">
-                        <span>Your Photo</span>
+                    <div class="image-container">
+                        <img src="assets/profile.jpg" alt="Eren Fidan" class="profile-img">
+                        <div class="image-ring"></div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Current Status -->
+    <!-- Current Status - Company Branded -->
     <section class="status" id="about">
         <div class="container">
             <div class="status-grid">
-                <div class="status-item">
+                
+                <!-- Aalto MSc - Current -->
+                <div class="status-item current">
                     <span class="status-label">Currently</span>
                     <h3>MSc Marine Technology</h3>
                     <p>Aalto University, Finland</p>
-                    <span class="badge">Excellence Scholarship 100%</span>
+                    <span class="badge badge-current">Excellence Scholarship 100%</span>
                 </div>
-                <div class="status-item">
+                
+                <!-- Turkish Airlines - Red Theme -->
+                <div class="status-item thy">
                     <span class="status-label">Previously</span>
                     <h3>Business Development Engineer</h3>
                     <p>Turkish Airlines Technic</p>
-                    <span class="badge badge-secondary">Strategic Projects</span>
+                    <span class="badge badge-thy">Strategic Projects</span>
                 </div>
-                <div class="status-item">
+                
+                <!-- Schneider Electric - Green Theme -->
+                <div class="status-item schneider">
                     <span class="status-label">Previously</span>
                     <h3>Data Scientist</h3>
                     <p>Schneider Electric HQ</p>
-                    <span class="badge badge-secondary">Strategy & Digital</span>
+                    <span class="badge badge-schneider">Strategy & Digital</span>
                 </div>
+                
+                <!-- Aalto Research - Purple Theme -->
+                <div class="status-item aalto">
+                    <span class="status-label">Previously</span>
+                    <h3>Research Assistant</h3>
+                    <p>Aalto University</p>
+                    <span class="badge badge-aalto">Seakeeping & CFD</span>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -180,30 +201,145 @@
             <h2 class="section-title">Latest Writing</h2>
             <div class="writing-list">
                 
-                <article class="writing-item">
+                <!-- Featured Blog Post - Aalto Research -->
+                <article class="writing-item featured">
                     <time class="writing-date">Feb 2025</time>
                     <div class="writing-content">
-                        <h3><a href="#">From Excel to Python: How I Automated Aviation Contract Analysis</a></h3>
-                        <p>Lessons from processing 650+ page agreements at Turkish Airlines Technic.</p>
+                        <h3><a href="blog-ai-marine-2026.html">From 2022 to 2026: How AI Changed Marine Engineering (And My Predictions)</a></h3>
+                        <p>In 2022, I was a research assistant at Aalto working on "Emerging Methods in Seakeeping." 
+                        I predicted AI/ML would revolutionize CFD and ship design. Four years later, here's what 
+                        actually happened, what I got right, and what surprised me.</p>
+                        <div class="writing-meta">
+                            <span class="writing-tag">Featured</span>
+                            <span>🚢 Seakeeping</span>
+                            <span>🤖 AI/ML</span>
+                            <span>⏱️ 8 min read</span>
+                        </div>
                     </div>
                 </article>
 
                 <article class="writing-item">
                     <time class="writing-date">Jan 2025</time>
                     <div class="writing-content">
-                        <h3><a href="#">Digital Shipyard: Why Naval Architecture Needs GitHub</a></h3>
-                        <p>Version control for CAD, collaborative design, and the future of shipbuilding workflows.</p>
+                        <h3><a href="#">From Excel to Python: How I Automated Aviation Contract Analysis</a></h3>
+                        <p>Lessons from processing 650+ page agreements at Turkish Airlines Technic using Python, 
+                        Pandas, and NLP techniques.</p>
+                        <div class="writing-meta">
+                            <span>✈️ Aviation</span>
+                            <span>🐍 Python</span>
+                            <span>⏱️ 6 min read</span>
+                        </div>
                     </div>
                 </article>
 
                 <article class="writing-item">
                     <time class="writing-date">Dec 2024</time>
                     <div class="writing-content">
-                        <h3><a href="#">Nordic Engineering Notes #1: Aalto & Finnish Maritime Industry</a></h3>
-                        <p>First impressions from the Excellence Scholarship program and Espoo's tech scene.</p>
+                        <h3><a href="#">Digital Shipyard: Why Naval Architecture Needs GitHub</a></h3>
+                        <p>Version control for CAD, collaborative design, and the future of shipbuilding workflows. 
+                        How we can bring software engineering practices to heavy industry.</p>
+                        <div class="writing-meta">
+                            <span>🚢 Naval Arch</span>
+                            <span>⚙️ CAD</span>
+                            <span>⏱️ 5 min read</span>
+                        </div>
                     </div>
                 </article>
 
+                <article class="writing-item">
+                    <time class="writing-date">Nov 2024</time>
+                    <div class="writing-content">
+                        <h3><a href="#">Nordic Engineering Notes #1: Aalto & Finnish Maritime Industry</a></h3>
+                        <p>First impressions from the Excellence Scholarship program and Espoo's tech scene. 
+                        Comparing Nordic vs. Turkish engineering cultures.</p>
+                        <div class="writing-meta">
+                            <span>🇫🇮 Finland</span>
+                            <span>🎓 Education</span>
+                            <span>⏱️ 4 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's work together</h3>
+                    <p>Open for collaborations in marine technology, data science, and engineering automation. 
+                    Currently based in Espoo, Finland.</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:erenfidanbusiness@gmail.com" class="contact-link">
+                            <span class="contact-icon">📧</span>
+                            <div>
+                                <strong>Email</strong>
+                                <span>erenfidanbusiness@gmail.com</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://linkedin.com/in/erenfidan14" target="_blank" class="contact-link">
+                            <span class="contact-icon">💼</span>
+                            <div>
+                                <strong>LinkedIn</strong>
+                                <span>linkedin.com/in/erenfidan14</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://github.com/erenfidan14" target="_blank" class="contact-link">
+                            <span class="contact-icon">💻</span>
+                            <div>
+                                <strong>GitHub</strong>
+                                <span>github.com/erenfidan14</span>
+                            </div>
+                        </a>
+                        
+                        <div class="contact-link">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Location</strong>
+                                <span>Espoo, Finland</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="speaking">Speaking Opportunity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    
+                    <p class="form-note">Or email me directly at <a href="mailto:erenfidanbusiness@gmail.com">erenfidanbusiness@gmail.com</a></p>
+                </form>
             </div>
         </div>
     </section>
@@ -268,5 +404,6 @@
         </div>
     </footer>
 
+    <script src="js/main.js"></script>
 </body>
 </html>
