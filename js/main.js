@@ -21,7 +21,40 @@ document.addEventListener('DOMContentLoaded', function() {
             themeToggle.style.transform = 'rotate(0deg)';
         }, 300);
     }
-    
+    (function () {
+  const STORAGE_KEY = "theme";
+  const root = document.documentElement;
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+
+  function getInitialTheme() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "dark" || saved === "light") return saved;
+
+    // fallback: system preference
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  // Apply immediately (prevents flash of wrong theme)
+  applyTheme(getInitialTheme());
+
+  // Hook toggle if present on the page
+  window.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("themeToggle");
+    if (!toggle) return;
+
+    toggle.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+  });
+})();
+
     // Event listener for toggle button
     themeToggle.addEventListener('click', toggleTheme);
     
