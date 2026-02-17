@@ -24,6 +24,15 @@
     --color-footer-text-muted: rgba(255, 255, 255, 0.5);
     --color-shadow: rgba(0, 0, 0, 0.1);
     --color-image-ring: rgba(0, 212, 170, 0.3);
+    :root {
+  /* ...keep your existing vars... */
+
+  /* Improve light-mode legibility */
+  --color-text-secondary: #475569;   /* was #6B7280 */
+  --color-bg-secondary: #F3F6FA;     /* slightly darker than pure off-white */
+  --color-border: #DDE3EA;           /* a touch stronger */
+}
+
     
     /* Company Brand Colors */
     --thy-red: #C70A0C;
