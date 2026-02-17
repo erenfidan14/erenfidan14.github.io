@@ -220,6 +220,11 @@ body {
 .nav-links a:hover::after {
     width: 100%;
 }
+/* Light mode hero headline: never let tertiary text go pale */
+.hero .highlight-tertiary {
+  color: #0A2540; /* strong readable */
+  font-weight: 700;
+}
 
 /* Hero headline: warmer, cleaner highlight palette (local override) */
 .hero .highlight {
@@ -231,7 +236,7 @@ body {
 }
 
 .hero .highlight-tertiary {
-    color: #E5E7EB; /* near-white, high contrast */
+    color: #1F3A5F; /* near-white, high contrast */
 }
 
 /* Dark mode hero headline tuning */
