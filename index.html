@@ -1,15 +1,3 @@
-<!-- index.html (optimized)
-  Fixes / optimizations:
-  - Proper skip-to-content + main landmark
-  - Logo links to top (#) and adds aria labels
-  - Adds rel="noopener" to external links
-  - Improves hero text contrast by using semantic brand spans (works with CSS updates you already started)
-  - Ensures profile image loads (assets/profile.png) + adds loading/decoding
-  - Adds YouTube + Activities sections kept, but uses consistent section classes
-  - Adds "Back to top" link in footer
-  - Keeps theme toggle id="themeToggle" for main.js
--->
-
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -18,21 +6,20 @@
   <title>Eren Fidan — Mechanical Engineer</title>
   <meta name="description" content="Mechanical Engineer building at the intersection of naval architecture, aerospace, and data-driven design." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <a href="#main" class="sr-only sr-only-focusable">Skip to content</a>
-
-  <!-- Navigation -->
-  <nav class="nav" aria-label="Primary">
+  <nav class="nav">
     <div class="container nav-container">
-      <a href="#" class="logo" aria-label="Home">erenfidan</a>
+      <a href="index.html" class="logo">erenfidan</a>
 
       <div class="nav-right">
         <ul class="nav-links">
@@ -45,493 +32,50 @@
           <li><a href="https://github.com/erenfidan14" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
 
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
-          <span class="theme-icon light" aria-hidden="true">☀️</span>
-          <span class="theme-icon dark" aria-hidden="true">🌙</span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="theme-icon light">☀️</span>
+          <span class="theme-icon dark">🌙</span>
         </button>
       </div>
     </div>
   </nav>
 
-  <main id="main">
-    <!-- Hero Section -->
-    <header class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <p class="hero-greeting">Hi, I'm Eren.</p>
-
-            <h1 class="hero-title">
-              Mechanical Engineer building at the intersection of
-              <span class="highlight brand-thy">naval architecture</span>,
-              <span class="highlight-secondary brand-aalto">aerospace</span> &
-              <span class="highlight-tertiary brand-schneider">data-driven design</span>.
-            </h1>
-
-            <p class="hero-description">
-              Currently pursuing MSc Marine Technology at
-              <span class="brand-aalto">Aalto University</span> (100% Excellence Scholarship).
-              Previously:
-              <span class="brand-thy">Turkish Airlines Technic</span>,
-              <span class="brand-schneider">Schneider Electric</span>,
-              Aalto Research.
-            </p>
-
-            <div class="hero-actions">
-              <a href="#projects" class="btn btn-primary">View Projects</a>
-              <a href="#writing" class="btn btn-secondary">Read Blog</a>
-            </div>
-          </div>
-
-          <div class="hero-image">
-            <div class="image-container">
-              <img
-                src="assets/profile.png"
-                alt="Portrait of Eren Fidan"
-                class="profile-img"
-                loading="eager"
-                decoding="async"
-              />
-              <div class="image-ring" aria-hidden="true"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Current Status -->
-    <section class="status" id="about">
-      <div class="container">
-        <div class="status-grid">
-          <div class="status-item current">
-            <span class="status-label">Currently</span>
-            <h3>MSc Marine Technology</h3>
-            <p>Aalto University, Finland</p>
-            <span class="badge badge-current">Excellence Scholarship 100%</span>
-          </div>
-
-          <div class="status-item thy">
-            <span class="status-label">Previously</span>
-            <h3>Business Development Engineer</h3>
-            <p>Turkish Airlines Technic</p>
-            <span class="badge badge-thy">Strategic Projects</span>
-          </div>
-
-          <div class="status-item schneider">
-            <span class="status-label">Previously</span>
-            <h3>Data Scientist</h3>
-            <p>Schneider Electric HQ</p>
-            <span class="badge badge-schneider">Strategy & Digital</span>
-          </div>
-
-          <div class="status-item aalto">
-            <span class="status-label">Previously</span>
-            <h3>Research Assistant</h3>
-            <p>Aalto University</p>
-            <span class="badge badge-aalto">Seakeeping & CFD</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="projects" id="projects">
-      <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-icon" aria-hidden="true">⚙️</div>
-              <div class="project-links">
-                <a href="#" class="project-link" title="View Code">Code</a>
-              </div>
-            </div>
-            <h3 class="project-title">CAD Automation Pipeline</h3>
-            <p class="project-description">
-              Python-based automation for Siemens NX and Rhino. Batch processing,
-              parametric geometry generation, and automated export workflows.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Siemens NX</span>
-              <span class="tag">Rhino</span>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-icon" aria-hidden="true">🚢</div>
-              <div class="project-links">
-                <a href="#" class="project-link">Demo</a>
-                <a href="#" class="project-link">Code</a>
-              </div>
-            </div>
-            <h3 class="project-title">Ship Hull Optimization</h3>
-            <p class="project-description">
-              Hydrodynamic analysis tools for preliminary ship design.
-              Resistance calculation and hull form optimization using Python.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Naval Arch</span>
-              <span class="tag">Python</span>
-              <span class="tag">FEA</span>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-icon" aria-hidden="true">📊</div>
-              <div class="project-links">
-                <a href="#" class="project-link">Demo</a>
-                <a href="#" class="project-link">Code</a>
-              </div>
-            </div>
-            <h3 class="project-title">Contract Analysis Dashboard</h3>
-            <p class="project-description">
-              Automated analysis system for 650+ page aviation contracts.
-              Built during Turkish Airlines Technic internship.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Pandas</span>
-              <span class="tag">NLP</span>
-              <span class="tag">Streamlit</span>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-icon" aria-hidden="true">🗺️</div>
-              <div class="project-links">
-                <a href="#" class="project-link">Demo</a>
-                <a href="#" class="project-link">Code</a>
-              </div>
-            </div>
-            <h3 class="project-title">Global Data Distribution Maps</h3>
-            <p class="project-description">
-              Interactive Folium-based visualization for Schneider Electric.
-              Deployed as shareable no-code platform.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Folium</span>
-              <span class="tag">GeoPy</span>
-              <span class="tag">Python</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Writing -->
-    <section class="writing" id="writing">
-      <div class="container">
-        <h2 class="section-title">Latest Writing</h2>
-
-        <div class="writing-list">
-          <article class="writing-item featured">
-            <time class="writing-date">Feb 2025</time>
-            <div class="writing-content">
-              <h3>
-                <a href="./blog/2022-to-2026-ai-marine.html">
-                  From 2022 to 2026: How AI Changed Marine Engineering (And My Predictions)
-                </a>
-              </h3>
-              <p>
-                In 2022, I was a research assistant at Aalto working on "Emerging Methods in Seakeeping."
-                I predicted AI/ML would revolutionize CFD and ship design. Four years later, here's what
-                actually happened, what I got right, and what surprised me.
-              </p>
-              <div class="writing-meta">
-                <span class="writing-tag">Featured</span>
-                <span>🚢 Seakeeping</span>
-                <span>🤖 AI/ML</span>
-                <span>⏱️ 8 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="writing-item">
-            <time class="writing-date">Jan 2025</time>
-            <div class="writing-content">
-              <h3><a href="#">From Excel to Python: How I Automated Aviation Contract Analysis</a></h3>
-              <p>Lessons from processing 650+ page agreements at Turkish Airlines Technic using Python, Pandas, and NLP techniques.</p>
-              <div class="writing-meta">
-                <span>✈️ Aviation</span>
-                <span>🐍 Python</span>
-                <span>⏱️ 6 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="writing-item">
-            <time class="writing-date">Dec 2024</time>
-            <div class="writing-content">
-              <h3><a href="#">Digital Shipyard: Why Naval Architecture Needs GitHub</a></h3>
-              <p>Version control for CAD, collaborative design, and the future of shipbuilding workflows.</p>
-              <div class="writing-meta">
-                <span>🚢 Naval Arch</span>
-                <span>⚙️ CAD</span>
-                <span>⏱️ 5 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="writing-item">
-            <time class="writing-date">Nov 2024</time>
-            <div class="writing-content">
-              <h3><a href="#">Nordic Engineering Notes #1: Aalto & Finnish Maritime Industry</a></h3>
-              <p>First impressions from the Excellence Scholarship program and Espoo's tech scene.</p>
-              <div class="writing-meta">
-                <span>🇫🇮 Finland</span>
-                <span>🎓 Education</span>
-                <span>⏱️ 4 min read</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Activities -->
-    <section class="projects" id="activities">
-      <div class="container">
-        <h2 class="section-title">Extracurricular</h2>
-
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-icon" aria-hidden="true">🏁</div>
-              <div class="project-links">
-                <a href="#" class="project-link">Highlights</a>
-              </div>
-            </div>
-            <h3 class="project-title">Competitions & Communities</h3>
-            <p class="project-description">
-              Student entrepreneurship + engineering communities, competitions, and event organization.
-              Focus: execution under time pressure, sponsorship/outreach, and technical storytelling.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Aalto</span>
-              <span class="tag">Leadership</span>
-              <span class="tag">Events</span>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-icon" aria-hidden="true">🧠</div>
-              <div class="project-links">
-                <a href="#" class="project-link">Portfolio</a>
-              </div>
-            </div>
-            <h3 class="project-title">Content & Building in Public</h3>
-            <p class="project-description">
-              Long-form engineering and lifestyle workflows: scripting, editing, publishing cadence, and audience iteration.
-              Used as a communication layer for technical projects.
-            </p>
-            <div class="project-tags">
-              <span class="tag">YouTube</span>
-              <span class="tag">Editing</span>
-              <span class="tag">Storytelling</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- YouTube -->
-    <section class="writing" id="youtube">
-      <div class="container">
-        <h2 class="section-title">YouTube Channels</h2>
-
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-icon" aria-hidden="true">📺</div>
-              <div class="project-links">
-                <a href="https://www.youtube.com/@erensjourney" target="_blank" rel="noopener" class="project-link">Channel</a>
-              </div>
-            </div>
-            <h3 class="project-title">Eren’s Journey</h3>
-            <p class="project-description">
-              Engineering abroad, projects, learning systems, disciplined output. Vlogs + project breakdowns.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Engineering</span>
-              <span class="tag">Vlog</span>
-              <span class="tag">Projects</span>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-header">
-              <div class="project-icon" aria-hidden="true">🎵</div>
-              <div class="project-links">
-                <a href="https://www.youtube.com/c/emreerenfidan" target="_blank" rel="noopener" class="project-link">Channel</a>
-              </div>
-            </div>
-            <h3 class="project-title">Emre & Eren Fidan — Music</h3>
-            <p class="project-description">
-              Acoustic pop: covers/originals, production experiments, and releases.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Music</span>
-              <span class="tag">Acoustic</span>
-              <span class="tag">Production</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <h2 class="section-title">Get In Touch</h2>
-
-        <div class="contact-grid">
-          <div class="contact-info">
-            <h3>Let's work together</h3>
-            <p>
-              Open for collaborations in marine technology, data science, and engineering automation.
-              Currently based in Espoo, Finland.
-            </p>
-
-            <div class="contact-links">
-              <a href="mailto:erenfidanbusiness@gmail.com" class="contact-link">
-                <span class="contact-icon" aria-hidden="true">📧</span>
-                <div>
-                  <strong>Email</strong>
-                  <span>erenfidanbusiness@gmail.com</span>
-                </div>
-              </a>
-
-              <a href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noopener" class="contact-link">
-                <span class="contact-icon" aria-hidden="true">💼</span>
-                <div>
-                  <strong>LinkedIn</strong>
-                  <span>linkedin.com/in/erenfidan14</span>
-                </div>
-              </a>
-
-              <a href="https://github.com/erenfidan14" target="_blank" rel="noopener" class="contact-link">
-                <span class="contact-icon" aria-hidden="true">💻</span>
-                <div>
-                  <strong>GitHub</strong>
-                  <span>github.com/erenfidan14</span>
-                </div>
-              </a>
-
-              <div class="contact-link" role="group" aria-label="Location">
-                <span class="contact-icon" aria-hidden="true">📍</span>
-                <div>
-                  <strong>Location</strong>
-                  <span>Espoo, Finland</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email" />
-            </div>
-
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select id="subject" name="subject" required>
-                <option value="">Select a topic</option>
-                <option value="collaboration">Collaboration</option>
-                <option value="consulting">Consulting</option>
-                <option value="speaking">Speaking Opportunity</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..." autocomplete="off"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-            <p class="form-note">
-              Or email me directly at <a href="mailto:erenfidanbusiness@gmail.com">erenfidanbusiness@gmail.com</a>
-            </p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tools -->
-    <section class="tools">
-      <div class="container">
-        <h2 class="section-title">Tools & Expertise</h2>
-
-        <div class="tools-grid">
-          <div class="tool-category">
-            <h4>CAD & Design</h4>
-            <ul>
-              <li>Siemens NX</li>
-              <li>Rhinoceros 3D</li>
-              <li>SolidWorks</li>
-              <li>AutoCAD</li>
-            </ul>
-          </div>
-
-          <div class="tool-category">
-            <h4>Programming</h4>
-            <ul>
-              <li>Python (Pandas, NumPy)</li>
-              <li>MATLAB</li>
-              <li>Excel/VBA</li>
-              <li>Power BI</li>
-            </ul>
-          </div>
-
-          <div class="tool-category">
-            <h4>Analysis</h4>
-            <ul>
-              <li>FEA / FEM</li>
-              <li>Hydrodynamics</li>
-              <li>Data Visualization</li>
-              <li>Statistical Modeling</li>
-            </ul>
-          </div>
-
-          <div class="tool-category">
-            <h4>Industries</h4>
-            <ul>
-              <li>Naval Architecture</li>
-              <li>Aerospace/Aviation</li>
-              <li>Marine Technology</li>
-              <li>Energy</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer" aria-label="Footer">
+  <header class="hero">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-links">
-          <a href="https://github.com/erenfidan14" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:erenfidanbusiness@gmail.com">Email</a>
-          <a href="#" aria-label="Back to top">Top</a>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <p class="hero-greeting">Hi, I'm Eren.</p>
+
+          <h1 class="hero-title">
+            Mechanical Engineer building at the intersection of
+            <span class="highlight">naval architecture</span>,
+            <span class="highlight">aerospace</span> &
+            <span class="highlight">data-driven design</span>.
+          </h1>
+
+          <p class="hero-description">
+            Currently pursuing MSc Marine Technology at <span class="highlight-inline aalto">Aalto University</span> (100% Excellence Scholarship).
+            Previously: <span class="highlight-inline thy">Turkish Airlines Technic</span>, <span class="highlight-inline schneider">Schneider Electric</span>, Aalto Research.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#writing" class="btn btn-secondary">Read Blog</a>
+          </div>
         </div>
-        <p class="footer-copy">© 2025 Eren Fidan. Built with curiosity in Espoo, Finland.</p>
+
+        <div class="hero-image">
+          <div class="image-container">
+            <img src="assets/profile.png" alt="Eren Fidan" class="profile-img" />
+            <div class="image-ring"></div>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </header>
+
+  <!-- (rest of your file stays the same) -->
+  <!-- KEEP your status/projects/writing/activities/youtube/contact/tools/footer exactly as you already have -->
 
   <script src="js/main.js"></script>
 </body>
