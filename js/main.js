@@ -1,87 +1,104 @@
-// Theme + UX (works on every page, even if some elements are missing)
+// Theme + UX (safe on pages without themeToggle)
 document.addEventListener("DOMContentLoaded", () => {
   const html = document.documentElement;
   const themeToggle = document.getElementById("themeToggle");
 
-  // --- Theme init (persist across all pages) ---
-  const saved = localStorage.getItem("theme");
-  if (saved === "dark" || saved === "light") {
-    html.setAttribute("data-theme", saved);
-  } else {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    html.setAttribute("data-theme", prefersDark ? "dark" : "light");
+  function systemPrefersDark() {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
 
-  // --- Toggle theme (guarded) ---
-  const applyTheme = (t) => {
-    html.setAttribute("data-theme", t);
-    localStorage.setItem("theme", t);
-  };
+  function getInitialTheme() {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark" || saved === "light") return saved;
+    return systemPrefersDark() ? "dark" : "light";
+  }
 
+  function applyTheme(theme) {
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }
+
+  // Apply theme on load
+  applyTheme(getInitialTheme());
+
+  // Toggle button (only if it exists on the page)
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
       const current = html.getAttribute("data-theme") || "light";
       const next = current === "light" ? "dark" : "light";
       applyTheme(next);
 
-      // button micro-animation (guarded)
-      themeToggle.style.transform = "rotate(360deg)";
-      setTimeout(() => (themeToggle.style.transform = "rotate(0deg)"), 300);
+      // small animation without forcing inline transform states
+      themeToggle.animate(
+        [{ transform: "rotate(0deg)" }, { transform: "rotate(360deg)" }],
+        { duration: 300, easing: "ease-out" }
+      );
     });
   }
 
-  // If user never set a theme manually, follow system changes
-  const mq = window.matchMedia("(prefers-color-scheme: dark)");
-  mq.addEventListener?.("change", (e) => {
-    if (localStorage.getItem("theme")) return; // user override exists
-    html.setAttribute("data-theme", e.matches ? "dark" : "light");
-  });
+  // If user has NOT manually set theme, follow OS changes
+  const mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  if (mq && !localStorage.getItem("theme")) {
+    mq.addEventListener("change", (e) => applyTheme(e.matches ? "dark" : "light"));
+  }
 
-  // --- Smooth scroll only for same-page anchors that exist ---
+  // Smooth scroll ONLY for real in-page anchors (avoid breaking normal links)
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const href = a.getAttribute("href");
-      if (!href || href === "#") return;
+      if (!href || href === "#") return; // allow default
       const target = document.querySelector(href);
-      if (!target) return;
+      if (!target) return; // allow default if not found
+
       e.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
-  // --- Navbar shadow on scroll (guarded) ---
+  // Navbar shadow on scroll (safe if .nav missing)
   const nav = document.querySelector(".nav");
   if (nav) {
     window.addEventListener("scroll", () => {
       nav.style.boxShadow =
-        window.pageYOffset > 60 ? "0 2px 20px rgba(0, 0, 0, 0.12)" : "none";
+        window.scrollY > 100 ? "0 2px 20px rgba(0, 0, 0, 0.12)" : "none";
     });
   }
 
-  // --- Intersection observer animations (guarded) ---
-  const animated = document.querySelectorAll(".project-card, .writing-item, .tool-category");
-  if (animated.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "translateY(0)";
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
-    );
-
-    animated.forEach((el) => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(18px)";
-      el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-      observer.observe(el);
+  // Fade-in observer (safe even if elements don't exist)
+  const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+        observer.unobserve(entry.target);
+      }
     });
-  }
+  }, observerOptions);
 
-  // --- Form UX (guarded) ---
+  document.querySelectorAll(".project-card, .writing-item, .tool-category").forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(20px)";
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    observer.observe(el);
+  });
+
+  // Form button UX (safe)
   const contactForm = document.querySelector(".contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", () => {
-      const btn = contactForm.querySelector('button[t]()
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      if (!submitBtn) return;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }, 3000);
+    });
+  }
+});
+
+console.log("%c👋 Hey there! Welcome to my portfolio.", "color: #C70A0C; font-size: 16px; font-weight: bold;");
+console.log("%cExplore the code on GitHub: https://github.com/erenfidan14", "color: #6B7280; font-size: 12px;");
