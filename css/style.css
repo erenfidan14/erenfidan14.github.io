@@ -606,6 +606,33 @@ body {
     background: var(--color-accent);
     color: #0A2540;
 }
+/* Brand tags */
+.tag.aalto {
+  background: rgba(107, 45, 92, 0.12);
+  color: var(--aalto-purple);
+}
+[data-theme="dark"] .tag.aalto {
+  background: rgba(156, 77, 138, 0.22);
+  color: var(--aalto-purple-light);
+}
+
+.tag.thy {
+  background: rgba(199, 10, 12, 0.10);
+  color: var(--thy-red);
+}
+[data-theme="dark"] .tag.thy {
+  background: rgba(229, 57, 53, 0.20);
+  color: var(--thy-red-light);
+}
+
+.tag.schneider {
+  background: rgba(0, 158, 77, 0.12);
+  color: var(--schneider-green);
+}
+[data-theme="dark"] .tag.schneider {
+  background: rgba(0, 200, 83, 0.22);
+  color: var(--schneider-green-light);
+}
 
 /* Writing */
 .writing {
@@ -642,6 +669,7 @@ body {
 }
 
 /* Featured blog post styling */
+
 .writing-item.featured {
     border-left: 4px solid var(--aalto-purple);
     background: linear-gradient(135deg, var(--color-card-bg) 0%, rgba(107, 45, 92, 0.05) 100%);
