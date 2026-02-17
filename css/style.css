@@ -66,9 +66,21 @@
     --color-footer-text-muted: rgba(226, 232, 240, 0.5);
     --color-shadow: rgba(0, 0, 0, 0.3);
     --color-image-ring: rgba(0, 212, 170, 0.5);
+    --color-bg: #070B14;
+    --color-bg-secondary: rgba(255, 255, 255, 0.04);
+    --color-bg-tertiary: rgba(255, 255, 255, 0.07);
 }
 
 html { scroll-behavior: smooth; }
+
+/* Dark mode: richer, more remarkable background */
+[data-theme="dark"] body {
+    background:
+      radial-gradient(1200px 600px at 15% 10%, rgba(199, 10, 12, 0.18), transparent 60%),
+      radial-gradient(900px 500px at 85% 25%, rgba(0, 158, 77, 0.14), transparent 55%),
+      radial-gradient(1000px 700px at 60% 90%, rgba(107, 45, 92, 0.16), transparent 60%),
+      linear-gradient(180deg, #070B14 0%, #0B1324 55%, #070B14 100%);
+}
 
 body {
     font-family: var(--font-sans);
@@ -198,6 +210,24 @@ body {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+/* Hero headline: warmer, cleaner highlight palette (local override) */
+.hero .highlight {
+    color: var(--thy-red);
+}
+
+.hero .highlight-secondary {
+    color: #F59E0B; /* warm amber */
+}
+
+.hero .highlight-tertiary {
+    color: #E5E7EB; /* near-white, high contrast */
+}
+
+/* Dark mode hero headline tuning */
+[data-theme="dark"] .hero .highlight-tertiary {
+    color: #F1F5F9;
 }
 
 /* Hero */
