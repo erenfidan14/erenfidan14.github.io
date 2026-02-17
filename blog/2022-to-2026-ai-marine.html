@@ -1,15 +1,6 @@
-<!-- 2022-to-2026-ai-marine.html
-     Fixes:
-     1) Removed invalid <a> tags from <head> (was breaking markup)
-     2) Uses the SAME sticky nav + theme toggle as index.html
-     3) Dark mode works here (relies on your global css variables + main.js)
-     4) Easy way back home + optional “Blog” anchor support
-     5) Moved scripts to end of body (safer, faster)
-     6) Avoids redefining :root variables that can fight your main style.css
--->
-
+<!-- blog/2022-to-2026-ai-marine.html (fixed) -->
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,397 +12,359 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- IMPORTANT: blog folder => go up one level -->
+  <link rel="stylesheet" href="../css/style.css" />
 
-  <!-- Page-only styling (minimal + uses your global CSS variables) -->
+  <!-- Page-specific styles (minimal, doesn't fight your global theme) -->
   <style>
-    .post-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
+    /* Keep blog readable and aligned with your system */
     .post {
       padding: 3rem 0 5rem;
+      background: var(--color-bg);
+      transition: background-color var(--transition-speed);
+    }
+
+    .post-container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
 
     .post-header {
       margin-bottom: 2.5rem;
       padding-bottom: 1.5rem;
-      border-bottom: 2px solid var(--aalto-purple);
+      border-bottom: 1px solid var(--color-border);
     }
 
     .post-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem 1rem;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
+      align-items: center;
       color: var(--color-text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
 
     .post-tag {
-      background: var(--aalto-purple);
-      color: #fff;
+      display: inline-block;
       padding: 0.2rem 0.6rem;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(107, 45, 92, 0.12);
+      color: var(--aalto-purple);
     }
 
-    .post h1 {
-      font-size: 2.35rem;
+    [data-theme="dark"] .post-tag {
+      background: rgba(156, 77, 138, 0.22);
+      color: var(--aalto-purple-light);
+    }
+
+    .post-title {
+      font-size: 2.25rem;
       line-height: 1.15;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       color: var(--color-primary);
     }
 
-    .post h2 {
-      font-size: 1.5rem;
-      margin-top: 2.5rem;
-      margin-bottom: 0.9rem;
-      color: var(--color-primary);
-    }
-
-    .post h3 {
-      font-size: 1.15rem;
-      margin-top: 1.8rem;
-      margin-bottom: 0.7rem;
-      color: var(--color-primary);
-    }
-
-    .post p {
-      margin-bottom: 1.25rem;
-      color: var(--color-text);
-      line-height: 1.75;
-    }
-
-    .lede {
+    .post-subtitle {
       color: var(--color-text-secondary);
-      font-size: 1.05rem;
-      margin-bottom: 0;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin: 0;
     }
+
+    .post-body h2 {
+      margin-top: 2.25rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+
+    .post-body h3 {
+      margin-top: 1.75rem;
+      margin-bottom: 0.6rem;
+      font-size: 1.15rem;
+      color: var(--color-primary);
+    }
+
+    .post-body p {
+      margin: 0 0 1.25rem;
+      color: var(--color-text);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .post-body ul,
+    .post-body ol {
+      margin: 0 0 1.25rem 1.25rem;
+      color: var(--color-text);
+      line-height: 1.8;
+    }
+
+    .post-body li { margin: 0.4rem 0; }
 
     .highlight-box {
       background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
       border-left: 4px solid var(--aalto-purple);
       padding: 1.25rem 1.25rem;
-      margin: 2rem 0;
-      border-radius: 0 10px 10px 0;
-      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      margin: 1.75rem 0;
     }
 
     .highlight-box h4 {
+      margin: 0 0 0.5rem;
       color: var(--aalto-purple);
-      margin-bottom: 0.5rem;
       font-family: var(--font-mono);
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
-    .post ul,
-    .post ol {
-      margin-left: 1.25rem;
-      margin-bottom: 1.25rem;
-      color: var(--color-text);
-    }
-
-    .post li {
-      margin-bottom: 0.5rem;
-    }
-
-    .post blockquote {
+    blockquote {
+      margin: 1.75rem 0;
+      padding: 1rem 1.25rem;
       border-left: 4px solid var(--color-accent);
-      padding-left: 1.25rem;
-      margin: 2rem 0;
-      font-style: italic;
+      background: var(--color-bg-secondary);
+      border-radius: 10px;
       color: var(--color-text-secondary);
+      font-style: italic;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      padding: 0.15rem 0.4rem;
+      border-radius: 6px;
+      font-size: 0.92em;
     }
 
     .comparison-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem;
-      margin: 1.75rem 0 2.25rem;
+      margin: 1.5rem 0 1.75rem;
     }
 
     .comparison-box {
-      padding: 1.25rem;
-      border-radius: 12px;
       background: var(--color-bg-secondary);
       border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1.25rem;
     }
 
     .comparison-box h4 {
-      margin-bottom: 0.9rem;
+      margin: 0 0 0.75rem;
       font-family: var(--font-mono);
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
     }
 
     .box-2022 h4 { color: var(--thy-red); }
     .box-2026 h4 { color: var(--schneider-green); }
 
-    .post code {
-      font-family: var(--font-mono);
-      background: var(--color-bg-secondary);
-      padding: 0.18rem 0.35rem;
-      border-radius: 6px;
-      border: 1px solid var(--color-border);
-      font-size: 0.92em;
-    }
-
-    .post hr {
-      margin: 2.5rem 0;
-      border: none;
+    .post-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
       border-top: 1px solid var(--color-border);
-    }
-
-    .post-footer-note {
       color: var(--color-text-secondary);
       font-size: 0.95rem;
     }
 
-    /* Make blog footer match your site footer style */
-    .footer a {
-      color: var(--color-accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 968px) {
-      .post-wrap { padding: 0 1.25rem; }
-    }
-
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
+      .post-title { font-size: 1.75rem; }
       .comparison-grid { grid-template-columns: 1fr; }
-      .post h1 { font-size: 1.7rem; }
+      .post-container { padding: 0 1.25rem; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Use the SAME nav markup as index.html so theme toggle + styling works -->
-  <nav class="nav">
+  <!-- Same NAV as home, but links point back to index sections -->
+  <nav class="nav" aria-label="Primary">
     <div class="container nav-container">
-      <a href="index.html" class="logo">erenfidan</a>
+      <a href="../index.html" class="logo" aria-label="Home">erenfidan</a>
 
       <div class="nav-right">
         <ul class="nav-links">
-          <!-- These anchors work if you want to jump back to sections on the home page -->
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#projects">Projects</a></li>
-          <li><a href="index.html#writing">Writing</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="../index.html#writing">Writing</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
           <li><a href="https://github.com/erenfidan14" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
 
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
-          <span class="theme-icon light">☀️</span>
-          <span class="theme-icon dark">🌙</span>
+          <span class="theme-icon light" aria-hidden="true">☀️</span>
+          <span class="theme-icon dark" aria-hidden="true">🌙</span>
         </button>
       </div>
     </div>
   </nav>
 
-  <main class="post-wrap post">
-    <article>
+  <main class="post">
+    <div class="post-container">
       <header class="post-header">
         <div class="post-meta">
           <span class="post-tag">Featured</span>
           <span>February 2025</span>
           <span>⏱️ 8 min read</span>
           <span>•</span>
-          <a class="project-link" href="index.html#writing" style="text-decoration:none;">← Back to Writing</a>
+          <a href="../index.html#writing" class="project-link" style="text-transform:none;">← Back to Writing</a>
+          <a href="../index.html" class="project-link" style="text-transform:none;">Back to Home</a>
         </div>
 
-        <h1>From 2022 to 2026: How AI Changed Marine Engineering (And My Predictions)</h1>
-
-        <p class="lede">
-          In 2022, I was a research assistant at Aalto working on "Emerging Methods in Seakeeping."
-          I predicted AI/ML would revolutionize CFD and ship design. Four years later, here's what
+        <h1 class="post-title">From 2022 to 2026: How AI Changed Marine Engineering (And My Predictions)</h1>
+        <p class="post-subtitle">
+          In 2022, I was a research assistant at Aalto working on “Emerging Methods in Seakeeping.”
+          I predicted AI/ML would revolutionize CFD and ship design. Four years later, here’s what
           actually happened, what I got right, and what surprised me.
         </p>
       </header>
 
-      <p>
-        It feels strange to write this in 2026, looking back at my 2022 self—a third-year bachelor student
-        at Istanbul Technical University, spending my summer at Aalto University in Espoo, Finland. I was
-        working on a research report titled <strong>"Emerging Methods in Seakeeping: Bibliometric Analysis,
-        Systematic Literature Review, and Future Research Directions."</strong>
-      </p>
-
-      <p>
-        Back then, I was convinced that AI and machine learning would completely transform naval architecture
-        within 3-5 years. I wrote about deep learning for ship motion prediction, neural networks for automatic
-        berthing, and digital twins becoming standard in ship design. Some of it happened. Some didn't. And
-        some things I never saw coming.
-      </p>
-
-      <h2>What I Predicted in 2022</h2>
-
-      <p>My 2022 report identified several key trends I expected to mature by 2025-2026:</p>
-
-      <ol>
-        <li><strong>Deep Learning for Ship Motion Prediction:</strong> I thought LSTM neural networks would
-          replace traditional potential flow theory for real-time seakeeping predictions.</li>
-
-        <li><strong>AI-Accelerated CFD:</strong> I predicted machine learning would reduce CFD simulation
-          times from days to hours through surrogate models.</li>
-
-        <li><strong>Digital Twins:</strong> I expected every major shipyard to have digital twin capabilities
-          for real-time performance monitoring.</li>
-
-        <li><strong>Reinforcement Learning:</strong> I wrote about DRL (Deep Reinforcement Learning) being
-          used for autonomous ship maneuvering within 5 years.</li>
-      </ol>
-
-      <h2>What Actually Happened (2026 Reality)</h2>
-
-      <div class="comparison-grid">
-        <section class="comparison-box box-2022">
-          <h4>🎯 2022 Predictions</h4>
-          <ul>
-            <li>AI replaces traditional seakeeping methods</li>
-            <li>CFD simulation time: hours instead of days</li>
-            <li>Digital twins become industry standard</li>
-            <li>Autonomous ships using DRL by 2026</li>
-            <li>Cloud-based ship design platforms</li>
-          </ul>
-        </section>
-
-        <section class="comparison-box box-2026">
-          <h4>✅ 2026 Reality</h4>
-          <ul>
-            <li>AI complements (not replaces) traditional methods</li>
-            <li>CFD: 30-40% faster with ML surrogates</li>
-            <li>Digital twins: 15% of newbuilds (not standard)</li>
-            <li>Autonomous ships: still in trials</li>
-            <li>Cloud design: adopted by major yards</li>
-          </ul>
-        </section>
-      </div>
-
-      <h3>✅ What I Got Right</h3>
-
-      <p>
-        <strong>Cloud-based design platforms</strong> did become mainstream. During my time at Turkish Airlines
-        Technic in 2024, I saw how aviation was adopting cloud workflows, and shipbuilding followed. The pandemic accelerated
-        this, but the shift stuck.
-      </p>
-
-      <p>
-        <strong>ML-accelerated CFD</strong> is real, but not as revolutionary as I expected. In marine CFD,
-        ML surrogates and data-driven components are useful, but the best gains often come from workflow optimization,
-        meshing automation, and HPC improvements—not only models.
-      </p>
-
-      <h3>❌ What I Got Wrong</h3>
-
-      <p>
-        <strong>Deep learning didn't replace traditional methods.</strong> In 2022, I thought neural networks
-        would make strip theory obsolete. Instead, they coexist. The physics-based models are still more reliable
-        for certification, while ML handles optimization and real-time predictions. The marine industry is conservative—and
-        for good reason when safety is involved.
-      </p>
-
-      <p>
-        <strong>Autonomous ships are further away than I thought.</strong> DRL for ship maneuvering works in
-        simulations, but real-world deployment is slowed by regulation, liability, and insurance. The technology
-        progresses faster than the governance.
-      </p>
-
-      <h3>🚀 What Surprised Me</h3>
-
-      <div class="highlight-box">
-        <h4>💡 The Big Surprise: Generative AI for Design</h4>
+      <article class="post-body">
         <p>
-          I never mentioned LLMs or generative AI in my 2022 report. ChatGPT didn't exist when I wrote it.
-          Yet generative AI has become a major disruptor—not by replacing CFD, but by speeding up the design workflow:
-          CAD copilots, automated documentation, and natural-language interfaces for simulation tools.
+          It feels strange to write this in 2026, looking back at my 2022 self—a third-year bachelor student
+          at Istanbul Technical University, spending my summer at Aalto University in Espoo, Finland. I was
+          working on a research report titled <strong>“Emerging Methods in Seakeeping: Bibliometric Analysis,
+          Systematic Literature Review, and Future Research Directions.”</strong>
         </p>
-      </div>
 
-      <p>
-        Another surprise: <strong>the talent shift.</strong> In 2022, I wrote about the need for naval architects
-        to learn data science. By 2026, the reverse is also true—tech teams hire domain engineers to build maritime AI.
-      </p>
+        <p>
+          Back then, I was convinced that AI and machine learning would completely transform naval architecture
+          within 3–5 years. I wrote about deep learning for ship motion prediction, neural networks for automatic
+          berthing, and digital twins becoming standard in ship design. Some of it happened. Some didn’t.
+          And some things I never saw coming.
+        </p>
 
-      <h2>What This Means for 2030</h2>
+        <h2>What I Predicted in 2022</h2>
+        <p>My 2022 report identified several key trends I expected to mature by 2025–2026:</p>
 
-      <p>Based on what I've learned between 2022 and 2026, here are my new predictions:</p>
+        <ol>
+          <li><strong>Deep Learning for Ship Motion Prediction:</strong> I thought LSTM neural networks would replace traditional potential flow theory for real-time seakeeping predictions.</li>
+          <li><strong>AI-Accelerated CFD:</strong> I predicted machine learning would reduce CFD simulation times from days to hours through surrogate models.</li>
+          <li><strong>Digital Twins:</strong> I expected every major shipyard to have digital twin capabilities for real-time performance monitoring.</li>
+          <li><strong>Reinforcement Learning:</strong> I wrote about DRL being used for autonomous ship maneuvering within 5 years.</li>
+        </ol>
 
-      <ol>
-        <li><strong>Hybrid workflows will dominate.</strong> AI + physics-based models, not AI replacing physics.
-          The "digital thread" connecting design, build, and operations will matter more than any single model.</li>
+        <h2>What Actually Happened (2026 Reality)</h2>
 
-        <li><strong>Generative design will mature.</strong> By 2030, AI will generate candidate hull forms optimized for
-          routes and operational profiles, but humans will validate, certify, and own responsibility.</li>
+        <div class="comparison-grid">
+          <div class="comparison-box box-2022">
+            <h4>🎯 2022 Predictions</h4>
+            <ul>
+              <li>AI replaces traditional seakeeping methods</li>
+              <li>CFD simulation time: hours instead of days</li>
+              <li>Digital twins become industry standard</li>
+              <li>Autonomous ships using DRL by 2026</li>
+              <li>Cloud-based ship design platforms</li>
+            </ul>
+          </div>
 
-        <li><strong>Real-time decision support.</strong> Not fully autonomous ships, but AI-assisted route and operations
-          tools for captains and fleets in real time.</li>
+          <div class="comparison-box box-2026">
+            <h4>✅ 2026 Reality</h4>
+            <ul>
+              <li>AI complements (not replaces) traditional methods</li>
+              <li>CFD: 30–40% faster with ML surrogates</li>
+              <li>Digital twins: ~15% of newbuilds (not standard)</li>
+              <li>Autonomous ships: still in trials</li>
+              <li>Cloud design: adopted by major yards</li>
+            </ul>
+          </div>
+        </div>
 
-        <li><strong>Standardization of digital twins.</strong> Class societies will push standards that make twins as normal
-          as stability documentation.</li>
-      </ol>
+        <h3>✅ What I Got Right</h3>
+        <p>
+          <strong>Cloud-based design platforms</strong> did become mainstream. During my time at Turkish Airlines
+          Technic in 2024, I saw how aviation was adopting cloud workflows, and shipbuilding followed.
+        </p>
 
-      <h2>Personal Reflection</h2>
+        <p>
+          <strong>ML-accelerated CFD</strong> is real, but not as revolutionary as I expected. Useful,
+          but not the 10× improvement I predicted.
+        </p>
 
-      <p>
-        Reading my 2022 report today is humbling. I was enthusiastic but naive about adoption timelines. The technology moved fast;
-        the industry moved slow. But shipbuilding is safety-critical; deliberate validation is rational.
-      </p>
+        <h3>❌ What I Got Wrong</h3>
+        <p>
+          <strong>Deep learning didn’t replace traditional methods.</strong> Physics-based models remain
+          more reliable for certification. ML is used heavily for optimization and near-real-time support.
+        </p>
 
-      <blockquote>
-        "The future is already here—it's just not evenly distributed." — William Gibson
-      </blockquote>
+        <p>
+          <strong>Autonomous ships are further away than I thought.</strong> Real deployments are blocked
+          mainly by regulation, liability, and insurance—not purely technology.
+        </p>
 
-      <p>
-        Working at Turkish Airlines Technic taught me that aviation often adopts faster than maritime, but both move toward the same goal:
-        data-driven, optimized, sustainable operations.
-      </p>
+        <h3>🚀 What Surprised Me</h3>
+        <div class="highlight-box">
+          <h4>💡 The Big Surprise: Generative AI for Design</h4>
+          <p>
+            I never mentioned LLMs or generative AI in my 2022 report. ChatGPT didn’t exist when I wrote it.
+            Yet generative AI became a major disruptor: AI copilots for CAD, automated documentation, and
+            natural-language interfaces for simulation tools.
+          </p>
+        </div>
 
-      <p>
-        Now in 2026, finishing my MSc at Aalto with an Excellence Scholarship, I'm more optimistic than ever—just with more realistic expectations.
-        The marine industry doesn't need disruption; it needs integration of new tools into proven workflows.
-      </p>
+        <p>
+          Another surprise: <strong>the talent shift.</strong> By 2026, tech companies hire naval architects
+          to build maritime AI, while engineers learn data to stay competitive.
+        </p>
 
-      <p>
-        If you're reading this in 2030, check back. I suspect I'll have more surprises to report.
-      </p>
+        <h2>What This Means for 2030</h2>
+        <p>Based on what I learned between 2022 and 2026, here are my updated predictions:</p>
 
-      <hr />
+        <ol>
+          <li><strong>Hybrid workflows will dominate.</strong> AI + physics-based models, not replacement.</li>
+          <li><strong>Generative design will mature.</strong> AI generates candidates; humans validate and certify.</li>
+          <li><strong>Real-time operational decision support.</strong> Route optimization, comfort, fuel, weather.</li>
+          <li><strong>Digital twin standards.</strong> Class rules will converge around digital twin requirements.</li>
+        </ol>
 
-      <p class="post-footer-note">
-        <strong>About the author:</strong> Eren Fidan is a Mechanical Engineering MSc student at Aalto University,
-        with experience at Turkish Airlines Technic, Schneider Electric, and Aalto's marine research department.
-        He writes about the intersection of naval architecture, data science, and emerging technologies.
-      </p>
-    </article>
+        <h2>Personal Reflection</h2>
+        <p>
+          Reading my 2022 report today is humbling. The technology moved fast; adoption moved slower.
+          In safety-critical industries, that delay is rational.
+        </p>
+
+        <blockquote>
+          “The future is already here — it’s just not evenly distributed.” — William Gibson
+        </blockquote>
+
+        <p>
+          Now in 2026, finishing my MSc at Aalto with an Excellence Scholarship, I’m more optimistic than ever—
+          but with better calibration on timelines.
+        </p>
+
+        <div class="post-footer">
+          <p>
+            <strong>About the author:</strong> Eren Fidan is a Mechanical Engineering MSc student at Aalto University,
+            with experience at Turkish Airlines Technic, Schneider Electric, and Aalto’s marine research department.
+          </p>
+        </div>
+      </article>
+    </div>
   </main>
 
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
         <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="index.html#writing">Writing</a>
+          <a href="../index.html">Home</a>
+          <a href="../index.html#writing">Writing</a>
           <a href="https://github.com/erenfidan14" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:erenfidanbusiness@gmail.com">Email</a>
         </div>
-        <p class="footer-copy">© 2025 Eren Fidan. Built with curiosity in Espoo, Finland.</p>
+        <p class="footer-copy">© 2025 Eren Fidan.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Put script at end so it finds #themeToggle reliably -->
-  <script src="js/main.js"></script>
+  <!-- IMPORTANT: blog folder => go up one level -->
+  <script src="../js/main.js"></script>
 </body>
 </html>
