@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" id="top">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eren Fidan — Mechanical Engineer</title>
-  <meta name="description" content="Mechanical Engineer building at the intersection of naval architecture, aerospace, and data-driven design." />
+  <meta name="description" content="Business Development Engineer (Aviation) + Data/Automation Builder (AI). MSc Marine Technology at Aalto University." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -22,16 +22,17 @@
 
       <div class="nav-right">
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
+          <li><a href="#proof">Proof</a></li>
+          <li><a href="#case-studies">Case Studies</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#writing">Writing</a></li>
           <li><a href="#activities">Activities</a></li>
           <li><a href="#youtube">YouTube</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="https://github.com/erenfidan14" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a href="https://github.com/erenfidan14" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
 
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
           <span class="theme-icon light">☀️</span>
           <span class="theme-icon dark">🌙</span>
         </button>
@@ -39,49 +40,59 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
+  <!-- Hero + Proof bullets + CTAs -->
+  <header class="hero" id="top">
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
           <p class="hero-greeting">Hi, I'm Eren.</p>
 
           <h1 class="hero-title">
-            Mechanical Engineer building at the intersection of
-            <span class="highlight">naval architecture</span>,
-            <span class="highlight-secondary">aerospace</span> &
-            <span class="highlight-tertiary">data-driven design</span>.
+            Business Development Engineer <span class="muted">(Aviation)</span> + Data/Automation Builder <span class="muted">(AI)</span>
           </h1>
 
           <p class="hero-description">
-            Currently pursuing MSc Marine Technology at
-            <span class="highlight-tertiary">Aalto University</span> (100% Excellence Scholarship).
-            Previously:
-            <span class="highlight-secondary">Turkish Technic</span>,
-            <span class="highlight">Schneider Electric</span>,
-            Aalto Research.
+            MSc Marine Technology, <span class="highlight-tertiary">Aalto University</span> (100% Excellence Scholarship).
+            Previously: <span class="highlight">Turkish Technic</span>, <span class="highlight-secondary">Schneider Electric</span>, Aalto Research.
           </p>
 
-          <!-- Company logos (assets folder) -->
-          <div class="logo-strip" aria-label="Experience with">
+          <!-- Logo strip -->
+          <div class="logo-strip" aria-label="Company logos">
             <span class="logo-strip-label">Worked with</span>
-
             <div class="logo-strip-logos">
-              <img src="assets/tt.png" alt="Turkish Technic" loading="lazy" />
-              <img src="assets/schneider.png" alt="Schneider Electric" loading="lazy" />
-              <img src="assets/aalto.png" alt="Aalto University" loading="lazy" />
-              <img src="assets/rr.png" alt="Rolls-Royce" loading="lazy" />
+              <img src="assets/logos/turkish-technic.png" alt="Turkish Technic" loading="lazy" />
+              <img src="assets/logos/schneider.png" alt="Schneider Electric" loading="lazy" />
+              <img src="assets/logos/aalto.png" alt="Aalto University" loading="lazy" />
+              <img src="assets/logos/rolls-royce.png" alt="Rolls-Royce" loading="lazy" />
             </div>
-
-            <span class="logo-strip-note">
-              Contract negotiations • Wide-body engine facility program (Istanbul)
-            </span>
           </div>
 
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#writing" class="btn btn-secondary">Read Blog</a>
-          </div>
+          <!-- PROOF PACK (2) -->
+          <section class="proof" id="proof" aria-label="Proof highlights">
+            <h2 class="proof-title">Proof highlights</h2>
+            <ul class="proof-bullets">
+              <li>
+                <strong>Wide-body engine facility (Rolls-Royce stakeholder):</strong>
+                supported commercial + technical alignment for a new facility program (scope, requirements, negotiation inputs).
+              </li>
+              <li>
+                <strong>Aviation contract analytics:</strong>
+                built a Python workflow to structure/search long agreements (clauses, obligations, risk notes) for strategic projects.
+              </li>
+              <li>
+                <strong>Industrial geo/ops visualization (Schneider):</strong>
+                delivered interactive distribution maps and shareable dashboards for non-technical stakeholders.
+              </li>
+            </ul>
+
+            <!-- CTAs (3) -->
+            <div class="hero-actions hero-actions-proof">
+              <!-- Put your PDF here: assets/Eren_Fidan_CV.pdf -->
+              <a class="btn btn-primary" href="assets/Eren_Fidan_CV.pdf" download>Download CV (PDF)</a>
+              <a class="btn btn-secondary" href="#contact">Contact</a>
+              <a class="btn btn-ghost" href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </section>
         </div>
 
         <div class="hero-image">
@@ -94,39 +105,68 @@
     </div>
   </header>
 
-  <!-- Current Status -->
-  <section class="status" id="about">
+  <!-- Case Studies (4) -->
+  <section class="section section-alt" id="case-studies">
     <div class="container">
-      <div class="status-grid">
+      <h2 class="section-title">Case Studies</h2>
 
-        <div class="status-item current">
-          <span class="status-label">Currently</span>
-          <h3>MSc Marine Technology</h3>
-          <p>Aalto University, Finland</p>
-          <span class="badge badge-current">Excellence Scholarship 100%</span>
-        </div>
+      <div class="case-grid">
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-kicker">Commercial + Technical</span>
+            <span class="case-badge badge-thy">Aviation</span>
+          </div>
+          <h3 class="case-title">Wide-Body Engine Facility (Stakeholders incl. Rolls-Royce)</h3>
+          <p class="case-line"><strong>Problem:</strong> High-stakes scope and requirement alignment for a new facility program.</p>
+          <p class="case-line"><strong>What I did:</strong> Supported scope clarification, requirement framing, and negotiation-ready inputs.</p>
+          <p class="case-line"><strong>Outcome:</strong> Faster alignment on decision points and clearer contract inputs for the strategic projects team.</p>
+          <div class="case-links">
+            <a class="case-link" href="#contact">Request sanitized 1-pager</a>
+          </div>
+        </article>
 
-        <div class="status-item thy">
-          <span class="status-label">Previously</span>
-          <h3>Business Development Engineer</h3>
-          <p>Turkish Technic</p>
-          <span class="badge badge-thy">Strategic Projects</span>
-        </div>
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-kicker">Automation</span>
+            <span class="case-badge badge-current">Python</span>
+          </div>
+          <h3 class="case-title">Contract Analysis Automation (Python)</h3>
+          <p class="case-line"><strong>Problem:</strong> Very long agreements slow down review and risk extraction.</p>
+          <p class="case-line"><strong>What I built:</strong> Parsing + tagging workflow for clauses, dates, responsibilities, and risk notes.</p>
+          <p class="case-line"><strong>Outcome:</strong> Reduced manual scanning and improved consistency of review outputs.</p>
+          <div class="case-links">
+            <a class="case-link" href="#projects">See related projects</a>
+          </div>
+        </article>
 
-        <div class="status-item schneider">
-          <span class="status-label">Previously</span>
-          <h3>Data Scientist</h3>
-          <p>Schneider Electric HQ</p>
-          <span class="badge badge-schneider">Strategy & Digital</span>
-        </div>
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-kicker">Decision support</span>
+            <span class="case-badge badge-schneider">Data Viz</span>
+          </div>
+          <h3 class="case-title">Global Distribution Maps (Schneider Electric)</h3>
+          <p class="case-line"><strong>Problem:</strong> Teams needed a fast way to understand and communicate distribution patterns.</p>
+          <p class="case-line"><strong>What I built:</strong> Interactive Folium maps + lightweight sharing workflow for stakeholders.</p>
+          <p class="case-line"><strong>Outcome:</strong> Better visibility + easier sharing across teams.</p>
+          <div class="case-links">
+            <a class="case-link" href="#projects">See related projects</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <div class="status-item aalto">
-          <span class="status-label">Previously</span>
-          <h3>Research Assistant</h3>
-          <p>Aalto University</p>
-          <span class="badge badge-aalto">Seakeeping & CFD</span>
-        </div>
+  <!-- Proof assets (5) -->
+  <section class="section" id="proof-assets">
+    <div class="container">
+      <h2 class="section-title">Proof Assets</h2>
+      <p class="section-subtitle">Small, concrete evidence packages. Request sanitized versions if needed.</p>
 
+      <div class="asset-grid">
+        <a class="asset-chip" href="assets/Eren_Fidan_CV.pdf" download>📄 CV (PDF)</a>
+        <a class="asset-chip" href="#contact">🧾 Selected slides / 1-pagers (on request)</a>
+        <a class="asset-chip" href="#projects">🧪 Demos / repos (projects section)</a>
+        <a class="asset-chip" href="#writing">✍️ Writing / case write-ups</a>
       </div>
     </div>
   </section>
@@ -134,7 +174,7 @@
   <!-- Projects -->
   <section class="projects" id="projects">
     <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
+      <h2 class="section-title">Projects</h2>
 
       <div class="projects-grid">
         <article class="project-card">
@@ -146,8 +186,7 @@
           </div>
           <h3 class="project-title">CAD Automation Pipeline</h3>
           <p class="project-description">
-            Python-based automation for Siemens NX and Rhino. Batch processing,
-            parametric geometry generation, and automated export workflows.
+            Python automation for Siemens NX and Rhino: batch processing, parametric generation, export workflows.
           </p>
           <div class="project-tags">
             <span class="tag">Python</span>
@@ -166,8 +205,7 @@
           </div>
           <h3 class="project-title">Ship Hull Optimization</h3>
           <p class="project-description">
-            Hydrodynamic analysis tools for preliminary ship design.
-            Resistance calculation and hull form optimization using Python.
+            Hydrodynamic tooling for preliminary design: resistance estimation and hull-form optimization.
           </p>
           <div class="project-tags">
             <span class="tag">Naval Arch</span>
@@ -186,8 +224,7 @@
           </div>
           <h3 class="project-title">Contract Analysis Dashboard</h3>
           <p class="project-description">
-            Automated analysis system for 650+ page aviation contracts.
-            Built during Turkish Technic internship.
+            Structured analysis of long aviation contracts: obligations, dates, risks, and searchability.
           </p>
           <div class="project-tags">
             <span class="tag">Pandas</span>
@@ -206,8 +243,7 @@
           </div>
           <h3 class="project-title">Global Data Distribution Maps</h3>
           <p class="project-description">
-            Interactive Folium-based visualization for Schneider Electric.
-            Deployed as shareable no-code platform.
+            Interactive Folium maps + shareable outputs for stakeholder-friendly decision support.
           </p>
           <div class="project-tags">
             <span class="tag">Folium</span>
@@ -222,21 +258,17 @@
   <!-- Writing -->
   <section class="writing" id="writing">
     <div class="container">
-      <h2 class="section-title">Latest Writing</h2>
+      <h2 class="section-title">Writing</h2>
 
       <div class="writing-list">
         <article class="writing-item featured">
           <time class="writing-date">Feb 2025</time>
           <div class="writing-content">
             <h3>
-              <a href="./blog/2022-to-2026-ai-marine.html">
-                From 2022 to 2026: How AI Changed Marine Engineering (And My Predictions)
-              </a>
+              <a href="./blog/2022-to-2026-ai-marine.html">From 2022 to 2026: How AI Changed Marine Engineering</a>
             </h3>
             <p>
-              In 2022, I was a research assistant at Aalto working on "Emerging Methods in Seakeeping."
-              I predicted AI/ML would revolutionize CFD and ship design. Four years later, here's what
-              actually happened, what I got right, and what surprised me.
+              Aalto seakeeping research reflections: what I predicted, what happened, and what surprised me.
             </p>
             <div class="writing-meta">
               <span class="writing-tag">Featured</span>
@@ -250,47 +282,12 @@
         <article class="writing-item">
           <time class="writing-date">Jan 2025</time>
           <div class="writing-content">
-            <h3><a href="#">From Excel to Python: How I Automated Aviation Contract Analysis</a></h3>
-            <p>
-              Lessons from processing 650+ page agreements at Turkish Technic using Python,
-              Pandas, and NLP techniques.
-            </p>
+            <h3><a href="#">From Excel to Python: Automating Contract Review</a></h3>
+            <p>Lessons from processing long agreements using Python and structured extraction.</p>
             <div class="writing-meta">
               <span>✈️ Aviation</span>
               <span>🐍 Python</span>
               <span>⏱️ 6 min read</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="writing-item">
-          <time class="writing-date">Dec 2024</time>
-          <div class="writing-content">
-            <h3><a href="#">Digital Shipyard: Why Naval Architecture Needs GitHub</a></h3>
-            <p>
-              Version control for CAD, collaborative design, and the future of shipbuilding workflows.
-              How we can bring software engineering practices to heavy industry.
-            </p>
-            <div class="writing-meta">
-              <span>🚢 Naval Arch</span>
-              <span>⚙️ CAD</span>
-              <span>⏱️ 5 min read</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="writing-item">
-          <time class="writing-date">Nov 2024</time>
-          <div class="writing-content">
-            <h3><a href="#">Nordic Engineering Notes #1: Aalto & Finnish Maritime Industry</a></h3>
-            <p>
-              First impressions from the Excellence Scholarship program and Espoo's tech scene.
-              Comparing Nordic vs. Turkish engineering cultures.
-            </p>
-            <div class="writing-meta">
-              <span>🇫🇮 Finland</span>
-              <span>🎓 Education</span>
-              <span>⏱️ 4 min read</span>
             </div>
           </div>
         </article>
@@ -313,13 +310,12 @@
           </div>
           <h3 class="project-title">Competitions & Communities</h3>
           <p class="project-description">
-            Involvement in student entrepreneurship and engineering communities, competitions, and event organization.
-            Focus: execution under time pressure, sponsorship/outreach, and technical storytelling.
+            Entrepreneurship + engineering communities, competitions, and event work. Execution under time pressure.
           </p>
           <div class="project-tags">
-            <span class="tag">Aalto</span>
             <span class="tag">Leadership</span>
             <span class="tag">Events</span>
+            <span class="tag">Communication</span>
           </div>
         </article>
 
@@ -330,10 +326,9 @@
               <a href="#" class="project-link">Portfolio</a>
             </div>
           </div>
-          <h3 class="project-title">Content & Building in Public</h3>
+          <h3 class="project-title">Building in Public</h3>
           <p class="project-description">
-            Long-form engineering and lifestyle content workflows: scripting, editing, publishing cadence, and audience iteration.
-            Applied as a communication layer for technical projects.
+            Long-form content workflows and technical storytelling applied to engineering projects.
           </p>
           <div class="project-tags">
             <span class="tag">YouTube</span>
@@ -348,24 +343,24 @@
   <!-- YouTube -->
   <section class="writing" id="youtube">
     <div class="container">
-      <h2 class="section-title">YouTube Channels</h2>
+      <h2 class="section-title">YouTube</h2>
 
       <div class="projects-grid">
         <article class="project-card">
           <div class="project-header">
             <div class="project-icon">📺</div>
             <div class="project-links">
-              <a href="https://www.youtube.com/@erensjourney" target="_blank" rel="noreferrer" class="project-link">Channel</a>
+              <a href="https://www.youtube.com/@erensjourney" target="_blank" rel="noopener" class="project-link">Channel</a>
             </div>
           </div>
           <h3 class="project-title">Eren’s Journey</h3>
           <p class="project-description">
-            Engineering abroad, projects, learning systems, and disciplined output. Vlogs + project breakdowns.
+            Engineering abroad, projects, learning systems, and disciplined output. Vlogs + breakdowns.
           </p>
           <div class="project-tags">
             <span class="tag">Engineering</span>
             <span class="tag">Vlog</span>
-            <span class="tag">Aalto</span>
+            <span class="tag">Systems</span>
           </div>
         </article>
 
@@ -373,12 +368,12 @@
           <div class="project-header">
             <div class="project-icon">🎵</div>
             <div class="project-links">
-              <a href="https://www.youtube.com/c/emreerenfidan" target="_blank" rel="noreferrer" class="project-link">Channel</a>
+              <a href="https://www.youtube.com/c/emreerenfidan" target="_blank" rel="noopener" class="project-link">Channel</a>
             </div>
           </div>
           <h3 class="project-title">Emre & Eren Fidan — Music</h3>
           <p class="project-description">
-            Music channel: acoustic pop, covers/originals, production experiments, and releases.
+            Acoustic pop, covers/originals, production experiments, and releases.
           </p>
           <div class="project-tags">
             <span class="tag">Music</span>
@@ -390,19 +385,27 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact (6) -->
   <section class="contact" id="contact">
     <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
+      <h2 class="section-title">Contact</h2>
 
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Let's work together</h3>
+      <div class="contact-cta">
+        <div class="contact-cta-left">
+          <h3>Open to roles</h3>
           <p>
-            Open for collaborations in marine technology, data science, and engineering automation.
-            Currently based in Espoo, Finland.
+            Strategic projects, business development, technical consulting, and data/automation.
+            Based in Espoo, Finland (open to hybrid/relocation).
           </p>
 
+          <div class="contact-cta-actions">
+            <a class="btn btn-primary" href="mailto:erenfidanbusiness@gmail.com">Email me</a>
+            <a class="btn btn-secondary" href="assets/Eren_Fidan_CV.pdf" download>Download CV</a>
+            <a class="btn btn-ghost" href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="contact-cta-right">
           <div class="contact-links">
             <a href="mailto:erenfidanbusiness@gmail.com" class="contact-link">
               <span class="contact-icon">📧</span>
@@ -412,7 +415,7 @@
               </div>
             </a>
 
-            <a href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noreferrer" class="contact-link">
+            <a href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noopener" class="contact-link">
               <span class="contact-icon">💼</span>
               <div>
                 <strong>LinkedIn</strong>
@@ -420,7 +423,7 @@
               </div>
             </a>
 
-            <a href="https://github.com/erenfidan14" target="_blank" rel="noreferrer" class="contact-link">
+            <a href="https://github.com/erenfidan14" target="_blank" rel="noopener" class="contact-link">
               <span class="contact-icon">💻</span>
               <div>
                 <strong>GitHub</strong>
@@ -437,38 +440,39 @@
             </div>
           </div>
         </div>
-
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name" />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="your@email.com" />
-          </div>
-
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <select id="subject" name="subject" required>
-              <option value="">Select a topic</option>
-              <option value="collaboration">Collaboration</option>
-              <option value="consulting">Consulting</option>
-              <option value="speaking">Speaking Opportunity</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-          <p class="form-note">Or email me directly at <a href="mailto:erenfidanbusiness@gmail.com">erenfidanbusiness@gmail.com</a></p>
-        </form>
       </div>
+
+      <!-- Keep your form if you want; otherwise delete this block -->
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select a topic</option>
+            <option value="collaboration">Collaboration</option>
+            <option value="consulting">Consulting</option>
+            <option value="speaking">Speaking Opportunity</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+        <p class="form-note">Or email me directly at <a href="mailto:erenfidanbusiness@gmail.com">erenfidanbusiness@gmail.com</a></p>
+      </form>
     </div>
   </section>
 
@@ -476,7 +480,6 @@
   <section class="tools">
     <div class="container">
       <h2 class="section-title">Tools & Expertise</h2>
-
       <div class="tools-grid">
         <div class="tool-category">
           <h4>CAD & Design</h4>
@@ -487,7 +490,6 @@
             <li>AutoCAD</li>
           </ul>
         </div>
-
         <div class="tool-category">
           <h4>Programming</h4>
           <ul>
@@ -497,7 +499,6 @@
             <li>Power BI</li>
           </ul>
         </div>
-
         <div class="tool-category">
           <h4>Analysis</h4>
           <ul>
@@ -507,14 +508,13 @@
             <li>Statistical Modeling</li>
           </ul>
         </div>
-
         <div class="tool-category">
           <h4>Industries</h4>
           <ul>
-            <li>Naval Architecture</li>
-            <li>Aerospace/Aviation</li>
+            <li>Aviation</li>
             <li>Marine Technology</li>
             <li>Energy</li>
+            <li>Industrial Digitization</li>
           </ul>
         </div>
       </div>
@@ -526,13 +526,12 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-links">
-          <a href="https://github.com/erenfidan14" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="assets/Eren_Fidan_CV.pdf" download>CV</a>
+          <a href="https://linkedin.com/in/erenfidan14" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/erenfidan14" target="_blank" rel="noopener">GitHub</a>
           <a href="mailto:erenfidanbusiness@gmail.com">Email</a>
-          <a href="#">RSS</a>
         </div>
-
-        <p class="footer-copy">© 2025 Eren Fidan. Built with curiosity in Espoo, Finland.</p>
+        <p class="footer-copy">© 2026 Eren Fidan. Built in Espoo, Finland.</p>
       </div>
     </div>
   </footer>
