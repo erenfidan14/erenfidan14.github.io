@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const next = current === "light" ? "dark" : "light";
       applyTheme(next);
 
-      // small animation without forcing inline transform states
       themeToggle.animate(
         [{ transform: "rotate(0deg)" }, { transform: "rotate(360deg)" }],
         { duration: 300, easing: "ease-out" }
@@ -46,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const href = a.getAttribute("href");
-      if (!href || href === "#") return; // allow default
+      if (!href || href === "#") return;
       const target = document.querySelector(href);
-      if (!target) return; // allow default if not found
+      if (!target) return;
 
       e.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
