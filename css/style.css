@@ -384,26 +384,6 @@ html[data-theme="dark"] .hero {
   flex-wrap: wrap;
 }
 
-/* HARD CAP: never allow big images */
-.logo-strip-logos img {
-  height: 18px;                 /* compact */
-  max-height: 18px;
-  width: auto;
-  max-width: 120px;             /* prevents wide logos exploding */
-  object-fit: contain;
-  display: block;
-
-  padding: 6px 8px;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
-
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  opacity: 0.9;
-
-  transition: transform var(--transition-speed), opacity var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed);
-}
-
 html[data-theme="dark"] .logo-strip-logos img {
   background: rgba(255, 255, 255, 0.06);
   box-shadow: 0 2px 14px rgba(0,0,0,0.25);
@@ -416,15 +396,51 @@ html[data-theme="dark"] .logo-strip-logos img {
   border-color: rgba(199, 10, 12, 0.35);
 }
 
-/* If you want “extra small” on mobile */
-@media (max-width: 520px) {
-  .logo-strip-logos img {
-    height: 16px;
-    max-height: 16px;
-    max-width: 105px;
-    padding: 5px 7px;
+.logo-strip-logos img{
+  width: 100px;
+  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+
+  object-fit: contain;
+  display: block;
+
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+
+  background: rgba(255,255,255,0.70);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+
+  opacity: 0.92;
+  transition: transform var(--transition-speed),
+              opacity var(--transition-speed),
+              border-color var(--transition-speed),
+              background-color var(--transition-speed),
+              box-shadow var(--transition-speed);
+}
+
+html[data-theme="dark"] .logo-strip-logos img{
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.28);
+  opacity: 0.95;
+}
+
+.logo-strip-logos img:hover{
+  opacity: 1;
+  transform: translateY(-2px);
+  border-color: rgba(199, 10, 12, 0.35);
+}
+
+@media (max-width: 520px){
+  .logo-strip-logos img{
+    width: 72px;
+    height: 72px;
+    padding: 8px;
+    border-radius: 12px;
   }
 }
+
 
 /* -----------------------------
    Status Section
